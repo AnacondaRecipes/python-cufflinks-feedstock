@@ -59,6 +59,10 @@ about:
   summary: Productivity Tools for Plotly + Pandas
 
 extra:
+  anaconda-services:
+    recipe-maintainers:
+      - bkreider
+    reason: "Dependency of pycaret for customer; https://anaconda.zendesk.com/agent/tickets/26940"
   recipe-maintainers:
     - dhirschfeld
     - timkpaine
