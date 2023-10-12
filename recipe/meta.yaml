@@ -17,8 +17,8 @@ build:
 
 requirements:
   build:
-    - m2-patch
-    - patch
+    - m2-patch  # [win]
+    - patch     # [not win]
   host:
     - python
     - pip
@@ -31,8 +31,8 @@ outputs:
       script: python -m pip install . --no-deps --no-build-isolation -vv
     requirements:
       build:
-        - m2-patch
-        - patch
+        - m2-patch  # [win]
+        - patch     # [not win]
       host:
         - python
         - pip
