@@ -11,6 +11,7 @@ source:
   patches:
     # `pandas.DataFrame.ix` is deprecated and does not work in newer versions.
     - 83ef352c821f6f5092d4132e3ecd5d5eb6b4e9e8.patch
+    - fix_df_loc.patch
 
 build:
   number: 0
@@ -57,7 +58,6 @@ outputs:
         - pip
         - nose
       commands:
-        - ls
         - pip check
         - nosetests -xv tests.py
 
