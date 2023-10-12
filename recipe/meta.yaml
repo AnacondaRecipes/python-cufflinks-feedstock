@@ -42,6 +42,8 @@ outputs:
     test:
       imports:
         - cufflinks
+      source_files:
+        - tests.py
       requires:
         - pip
         - nose
