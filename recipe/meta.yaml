@@ -11,7 +11,6 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -30,16 +29,33 @@ requirements:
     - plotly >=4.1.1
     - six >=1.9.0
 
-test:
-  imports:
-    - cufflinks
-  requires:
-    - pip
-  commands:
-    - pip check
-
 outputs:
   - name: python-cufflinks
+    build:
+      script: python -m pip install . --no-deps --no-build-isolation -vv
+    requirements:
+      host:
+        - python
+        - pip
+        - setuptools
+        - wheel
+      run:
+        - python
+        - chart-studio >=1.0.0
+        - colorlover >=0.2.1
+        - ipython >=5.3.0
+        - ipywidgets >=7.0.0
+        - numpy >=1.9.2
+        - pandas >=0.19.2
+        - plotly >=4.1.1
+        - six >=1.9.0
+    test:
+      imports:
+        - cufflinks
+      requires:
+        - pip
+      commands:
+        - pip check
 
   - name: cufflinks-py
     requirements:
