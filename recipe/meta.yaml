@@ -1,6 +1,5 @@
 {% set name = "cufflinks" %}
 {% set version = "0.17.3" %}
-{% set build_number = 0 %}
 
 package:
   name: python-{{ name|lower }}
@@ -11,14 +10,15 @@ source:
   sha256: 48c1b3406dc030004121966489eebc5518cea70fd4e3f16379b491328501a644
 
 build:
-  noarch: python
-  number: {{ build_number }}
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python
     - chart-studio >=1.0.0
@@ -33,14 +33,17 @@ requirements:
 test:
   imports:
     - cufflinks
+  requires:
+    - nose
+    - pip
+  commands:
+    - pip check
+    - nosetests -xv tests.py
 
 outputs:
   - name: python-cufflinks
 
   - name: cufflinks-py
-    build:
-      noarch: python
-      number: {{ build_number }}
     requirements:
       host:
         - python
@@ -53,6 +56,8 @@ outputs:
 
 about:
   home: https://github.com/santosjorge/cufflinks
+  dev_url: https://github.com/santosjorge/cufflinks
+  doc_url: https://github.com/santosjorge/cufflinks
   license: MIT
   license_family: MIT
   license_file: license.txt
