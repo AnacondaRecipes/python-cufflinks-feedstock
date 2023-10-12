@@ -44,8 +44,11 @@ outputs:
         - cufflinks
       requires:
         - pip
+        - nose
       commands:
+        - ls
         - pip check
+        - nosetests -xv tests.py
 
   - name: cufflinks-py
     requirements:
@@ -66,6 +69,8 @@ about:
   license_family: MIT
   license_file: license.txt
   summary: Productivity Tools for Plotly + Pandas
+  description: |
+    This library binds the power of plotly with the flexibility of pandas for easy plotting.
 
 extra:
   recipe-maintainers:
