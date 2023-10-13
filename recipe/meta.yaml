@@ -46,7 +46,8 @@ outputs:
         - ipython >=5.3.0
         - ipywidgets >=7.0.0
         - numpy >=1.9.2
-        - pandas >=0.19.2
+        # Removed Series.ix and DataFrame.ix in pandas 1.0.0, https://github.com/pandas-dev/pandas/pull/26438
+        - pandas >=1.0.0
         - plotly >=4.1.1
         - six >=1.9.0
     test:
