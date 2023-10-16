@@ -9,7 +9,7 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 48c1b3406dc030004121966489eebc5518cea70fd4e3f16379b491328501a644
   patches:
-    # `pandas.DataFrame.ix` is deprecated and does not work in newer versions.
+    # `pandas.DataFrame.ix` was deprecated and removed from pandas 1.0.0, https://github.com/pandas-dev/pandas/pull/26438
     - 83ef352c821f6f5092d4132e3ecd5d5eb6b4e9e8.patch
     - fix_df_loc.patch
 

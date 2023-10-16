@@ -3,7 +3,7 @@ From: Andrei Capastru <andreicap@users.noreply.github.com>
 Date: Tue, 4 Aug 2020 11:00:56 +0200
 Subject: [PATCH] Replace df.ix with df.loc in tools.py
 
-`pandas.DataFrame.ix` is deprecated and does not work in newer versions.
+`pandas.DataFrame.ix` was deprecated and removed from pandas 1.0.0, https://github.com/pandas-dev/pandas/pull/26438
 ---
  cufflinks/tools.py | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
