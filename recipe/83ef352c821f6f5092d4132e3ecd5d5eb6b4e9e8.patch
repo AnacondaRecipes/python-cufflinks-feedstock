@@ -1,0 +1,34 @@
+From 83ef352c821f6f5092d4132e3ecd5d5eb6b4e9e8 Mon Sep 17 00:00:00 2001
+From: Andrei Capastru <andreicap@users.noreply.github.com>
+Date: Tue, 4 Aug 2020 11:00:56 +0200
+Subject: [PATCH] Replace df.ix with df.loc in tools.py
+
+`pandas.DataFrame.ix` was deprecated and removed from pandas 1.0.0, https://github.com/pandas-dev/pandas/pull/26438
+---
+ cufflinks/tools.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cufflinks/tools.py b/cufflinks/tools.py
+index 3a0659d..0a15a02 100644
+--- a/cufflinks/tools.py
++++ b/cufflinks/tools.py
+@@ -537,7 +537,7 @@ def check_ann(annotation):
+ 			for k,v in list(annotation.items()):
+ 				if kind in ('candlestick','ohlc','candle'):
+ 					d=ta._ohlc_dict(df)
+-					maxv=df[d['high']].ix[k]
++					maxv=df[d['high']].loc[k]
+ 					yref='y2'
+ 				else:
+ 					maxv=df.loc[k].sum() if k in df.index else 0
+@@ -1378,8 +1378,8 @@ def get_trendline(df,date0,date1,column='close',**kwargs):
+ 	df=pd.DataFrame(df[column])
+ 	d={'x0':date0,
+ 	   'x1':date1,
+-	   'y0':df.ix[date0].values[0],
+-	   'y1':df.ix[date1].values[0]}
++	   'y0':df.loc[date0].values[0],
++	   'y1':df.loc[date1].values[0]}
+ 	d.update(**kwargs)
+ 	return d
+ 
