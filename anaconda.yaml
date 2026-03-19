@@ -2,3 +2,7 @@ anaconda_config_version: 1
 upstream_sources:
   - pypi:
       identifier: cufflinks
+      packages: &id001
+        - cufflinks-py
+        - python-cufflinks
+    packages: *id001
